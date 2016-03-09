@@ -27,6 +27,8 @@ public:
 	//CREATE
 	void insert(string isbn, string title, string author, string publisher, 
 				int quantityOnHand, double wholesaleCost, double retailPrice);
+	void update(string isbn, string title, string author, string publisher,
+		int quantityOnHand, double wholesaleCost, double retailPrice);
 	void deleteByIsbn(string isbn);
 
 	//READ
