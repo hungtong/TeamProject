@@ -67,6 +67,32 @@ void BookDAO::insert(string isbn, string title, string author, string publisher,
 	numBooks++;
 }
 
+void BookDAO::update(string isbn, string title, string author, string publisher,
+	int quantityOnHand, double wholesaleCost, double retailPrice)
+{
+	Book * b = nullptr;
+	int i = 0;
+	for (i = 0; i < numBooks; i++)
+	{
+		if (books[i].getIsbn() == isbn)
+		{
+			b = &books[i];
+			break;
+		}
+	}
+	if (b == nullptr)
+	{
+		cout << "Book doesn't exits" << endl;
+		return;
+	}
+	b->setTitle(title);
+	b->setAuthor(author);
+	b->setPublisher(publisher);
+	b->setQuantityOnHand(quantityOnHand);
+	b->setRetailPrice(retailPrice);
+	b->setWholesaleCost(wholesaleCost);
+}
+
 void BookDAO::deleteByIsbn(string isbn)
 {
 	int i = 0;
