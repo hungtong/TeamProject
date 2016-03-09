@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include<iostream>
 #include<fstream>
+#include<time.h>
 #include<sstream>
 #include<string>
 #include "Book.h"
@@ -41,14 +42,22 @@ void BookDAO::close() {
 	storeToFile();
 }
 	
+bool BookDAO::existsByIsbn(string isbn) {
+	for (int i = 0; i < numBooks; i++) {
+		if (books[i].getIsbn().find(isbn) != std::string::npos)
+			return true;
+	}
+
+	return false;
+}
+
 void BookDAO::insert(string isbn, string title, string author, string publisher, 
 					 int quantityOnHand, double wholesaleCost, double retailPrice) {
-		//  Validated  that no book exists by this isbn number.
-	Book *existingBook = get_by_isbn(isbn);
-		if (existingBook != nullptr){
-			cout << "Book already exist by this isbn number." << endl;
-			return;
-		}
+	//  Validated  that no book exists by this isbn number.
+	if (existsByIsbn(isbn)){
+		cout << "Book already exist by this isbn number." << endl;
+		return;
+	}
 		
 	time_t  dateAdded = time(NULL);
 	Book b(isbn, title, author, publisher, dateAdded, quantityOnHand, wholesaleCost, retailPrice);
@@ -58,28 +67,27 @@ void BookDAO::insert(string isbn, string title, string author, string publisher,
 	numBooks++;
 }
 
-void BookDAO::void delete_by_isbn(string isbn)
+void BookDAO::deleteByIsbn(string isbn)
+{
+	int i = 0;
+	for (i = 0; i < numBooks; i++)
 	{
-		int i = 0;
-		for (i = 0; i < numBooks; i++)
+		if (books[i].getIsbn() == isbn)
 		{
-			if (books[i].getIsbn() == isbn)
-			{
-				break;
-			}
+			break;
 		}
-		if (i == numBooks)
-		{
-			cout << "Book doesn't exits" <<endl;
-			return;
-		}
-		for (int j = i + 1; j < numBooks; j++)
-		{
-			books[j - 1] = books[j];
-		}
-		numBooks--;
 	}
-};
+	if (i == numBooks)
+	{
+		cout << "Book doesn't exits" <<endl;
+		return;
+	}
+	for (int j = i + 1; j < numBooks; j++)
+	{
+		books[j - 1] = books[j];
+	}
+	numBooks--;
+}
 
 Book * BookDAO::getBooksByISBN(string keyword) {
 	Book * possibleBooks = new Book[1024];
@@ -93,6 +101,7 @@ Book * BookDAO::getBooksByISBN(string keyword) {
 	Utils::sortByISBN(0, numberPossibleBooks, possibleBooks);
 	return possibleBooks;
 }
+
 Book * BookDAO::getBooksByTitle(string keyword) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
