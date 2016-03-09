@@ -1,13 +1,15 @@
 #include "stdafx.h"
 #include <string>
 #include <iostream>
+#include <sstream>
+#include<time.h>
 #include "Book.h"
 #include "Utils.h"
 
 using namespace std;
 
 // Converts time_t into string of format YY-MM-DD HH:MM:SS
-string Utils::string toString(time_t &time){
+string Utils::toString(time_t &time){
 	tm * timeinfo = localtime(&time);
 	int year = timeinfo->tm_year + 1900;
 	int month = timeinfo->tm_mon + 1;
@@ -23,7 +25,7 @@ string Utils::string toString(time_t &time){
 }
 
 // Parse string of format YY-MM-DD HH:MM:SS into time_t
-string Utils::time_t fromString(string str){
+time_t Utils::fromString(string str){
 	// separate date and time
 	istringstream dateTimeStream(str);
 	string date;
@@ -70,7 +72,7 @@ string Utils::time_t fromString(string str){
 // Converts book object into csv (comma separated value) entry
 string Utils::toCsv(Book &b) {
 	time_t dateAdded = b.getDateAdded();
-	string dateStr = toString(dateAdded);
+	string dateStr = Utils::toString(dateAdded);
 	return b.getIsbn() + "," + 
 		   b.getTitle() + "," + 
 		   b.getAuthor() + "," + 
