@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Book.h"
+#include "Utils.h"
 
 Book::Book(string isbn, string title, string author, string publisher, 
 			time_t dateAdded, int quantity, double wholesaleCost, double retailPrice) {
@@ -27,7 +28,7 @@ Book::Book() {
 }
 
 void Book::show() {
-	string dateStr = toString(dateAdded);
+	string dateStr = Utils::toString(dateAdded);
 	cout << "Book: isbn=" << isbn
 		 << ", title=" << title 
 		 << ", author=" << author 
