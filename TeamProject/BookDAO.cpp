@@ -82,7 +82,7 @@ void BookDAO::update(string isbn, string title, string author, string publisher,
 	}
 	if (b == nullptr)
 	{
-		cout << "Book doesn't exits" << endl;
+		cout << "Book doesn't exist" << endl;
 		return;
 	}
 	b->setTitle(title);
