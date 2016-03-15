@@ -34,7 +34,7 @@ InventoryModule * InventoryModule::getInstance() {
 	}
 	return inventoryModule;
 }
-
+//jgfdedtghyj
 string InventoryModule::askForISBN() {
 	string isbn = "";
 	do {
