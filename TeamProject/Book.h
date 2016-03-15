@@ -10,7 +10,7 @@ using namespace std;
 /*
 ISBN: This is the International Standard Book Number. It is a unique number assigned to each book by the publisher.
 Title: The title of the book.
-Author: The book’s author.
+Author: The bookâ€™s author.
 Publisher: The company that publishes the book.
 Date Added: The date the book was added to the inventory.
 Quantity-On-Hand: The number of copies of the book in inventory.
@@ -84,7 +84,7 @@ public:
 	Book(string isbn, string title, string author, string publisher, time_t dateAdded,
 		int quantity, double wholesaleCost, double retailPrice);
 
-	void setIsbn(string i);
+	void setIsbn(string i);//54894784
 	void setTitle(string t);
 	void setAuthor(string a);
 	void setPublisher(string p);
