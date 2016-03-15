@@ -1,13 +1,13 @@
-#include "stdafx.h"
+#include "stdafx.h"//access class 
 #include <iostream>
 
-#include "Module.h"
-#include "BookDAO.h"
+#include "Module.h"//access class
+#include "BookDAO.h"//access class
 
 using namespace std;
 
 int main()
 {
-	Module::showMainMenu();
+	Module::showMainMenu();// run show main menu function from class module
 	return 0;
 }
