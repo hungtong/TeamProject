@@ -22,17 +22,29 @@ CashierModule::CashierModule() {
 	_strdate_s(datePurchase);
 }
 
+/**
+ * return date the book was purchased
+ * 
+ * @return date the book was purchased
+ */
 char * CashierModule::getDatePurchase() {
 	return datePurchase;
 }
 
+/**
+ * create an instance of the CahshierModule class
+ * 
+ * @return instance of the cashier module class created
+ */
 CashierModule * CashierModule::getInstance() {
 	if (cashierModule == NULL) {
 		cashierModule = new CashierModule();
 	}
 	return cashierModule;
 }
-
+/**
+ * display cashier module screen
+ */
 void CashierModule::display() {
 	system("CLS");
 	cout << "Serendipity Book Sellers" << endl << endl;
