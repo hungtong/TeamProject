@@ -550,6 +550,9 @@ void InventoryModule::showBooksByQuantity() {
 	}
 }
 
+/*
+	Return a list of books related to a wholesale cost
+*/
 void InventoryModule::showBooksByWholesale() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -582,6 +585,9 @@ void InventoryModule::showBooksByWholesale() {
 	}
 }
 
+/*
+	Return a list of books related to a retail price
+*/
 void InventoryModule::showBooksByRetailPrice() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
