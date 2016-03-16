@@ -36,6 +36,7 @@ public:
 	static void sortByQuantity(int left, int right, Book book[], int sortMode);
 	static void sortByWholesaleCost(int left, int right, Book book[], int sortMode);
 	static void sortByRetailPrice(int left, int right, Book book[], int sortMode);
+	
 	static int readInt(char * message);
 	static double readDouble(char * message);
 };

@@ -8,7 +8,7 @@
 #include "Book.h"
 #include "Utils.h"
 
-using namespace std;
+	using namespace std;
 
 const int Utils::DEFAULT = 1;
 const int Utils::INCREASING = 2;
@@ -34,7 +34,7 @@ string Utils::convertBookToString(int itemNumber, int quantity, Book book) {
 	bookString += "\t Publisher:         " + book.getPublisher() + "\n";
 	bookString += "\t Date Added:        " + toString(book.getDateAdded()) + "\n";
 	bookString += "\t Quantity:          " + to_string(quantity) + "\n";
-	
+
 	ostringstream stream;
 	stream << fixed << setprecision(2) << book.getRetailPrice();
 	bookString += "\t Retail Price:      " + stream.str() + "\n";
@@ -104,20 +104,28 @@ time_t Utils::fromString(string str) {
 }
 
 // Converts book object into csv (comma separated value) entry
-string Utils::toCsv(Book &b) {
-	time_t dateAdded = b.getDateAdded();
+string Utils::toCsv(Book *b) {
+	time_t dateAdded = b->getDateAdded();
 	string dateStr = Utils::toString(dateAdded);
-	string csv = b.getIsbn() + "," + b.getTitle() + "," + b.getAuthor() + ","
-				+ b.getPublisher() + "," + dateStr + "," + to_string(b.getQuantityOnHand()) + ",";
-	
+	string csv = b->getIsbn() + "," + b->getTitle() + "," + b->getAuthor() + ","
+		+ b->getPublisher() + "," + dateStr + "," + to_string(b->getQuantityOnHand()) + ",";
+
 	ostringstream stream1, stream2;
-	stream1 << fixed << setprecision(2) << b.getWholesaleCost();
+	stream1 << fixed << setprecision(2) << b->getWholesaleCost();
 	csv += stream1.str() + ",";
 
-	stream2 << fixed << setprecision(2) << b.getRetailPrice();
+	stream2 << fixed << setprecision(2) << b->getRetailPrice();
 	csv += stream2.str();
-	
+
 	return csv;
+}
+
+// Parse isbn from csv
+string Utils::parseIsbn(string line) {
+	istringstream tokens(line);
+	string isbn = "";
+	getline(tokens, isbn, ',');
+	return isbn;
 }
 
 // Parse csv (comma separated value) entry into Book object
@@ -339,5 +347,33 @@ void Utils::sortByRetailPrice(int left, int right, Book book[], int sortMode) {
 		sortByRetailPrice(left, y, book, sortMode);
 		sortByRetailPrice(x, right, book, sortMode);
 	}
+}
+
+// read integer value from user input
+int Utils::readInt(char * message) {
+	int x;
+	cout << message;
+	while (!(cin >> x))
+	{
+		cout << "Please provide an interger value." << endl;
+		cin.clear();
+		cin.ignore(10000, '\n');
+		cout << message;
+	}
+	return x;
+}
+
+//read double from user input
+double Utils::readDouble(char * message) {
+	double x;
+	cout << message;
+	while (!(cin >> x))
+	{
+		cout << "Please provide an float value." << endl;
+		cin.clear();
+		cin.ignore(10000, '\n');
+		cout << message;
+	}
+	return x;
 }
 

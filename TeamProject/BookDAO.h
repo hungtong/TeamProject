@@ -13,7 +13,7 @@ using namespace std;
 
 class BookDAO {
 private:
-	const char * BOOK_FILE_NAME = "Books.txt";
+	static const string BOOK_FILE_NAME;
 	Book books[1024];
 	static BookDAO * bookDAO;
 	void appendIntoFile(Book *b);

@@ -15,6 +15,7 @@ using namespace std;
 BookDAO * BookDAO::bookDAO;
 int BookDAO::numBooks = 0;
 int BookDAO::numPossibleBooks = 0;
+const string BookDAO::BOOK_FILE_NAME = "Books.txt";
 
 // Read book objects from file
 BookDAO::BookDAO() {
@@ -311,3 +312,4 @@ Book * BookDAO::getBooksByRetailPrice(double price) {
 	numPossibleBooks = numberPossibleBooks;
 	return possibleBooks;
 }
+
