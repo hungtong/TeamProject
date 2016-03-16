@@ -350,7 +350,7 @@ void Utils::sortByRetailPrice(int left, int right, Book book[], int sortMode) {
 		sortByRetailPrice(x, right, book, sortMode);
 	}
 }
-
+// read integer value from user input
 int Utils::readInt(char * message){
 	int x;
 	cout << message;
@@ -364,6 +364,7 @@ int Utils::readInt(char * message){
 	return x;
 }
 
+//read double from user input
 double Utils::readDouble(char * message){
 	double x;
 	cout << message;
