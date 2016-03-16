@@ -1,4 +1,14 @@
+/*
+	CIS22B_TeamProject_BookStore
+	Archana Zone
+	Hung Tong
+	Michelle Liu
+	Theodore Fausak
+	Vasuki Sunder
+*/
+
 // Class Module Declaration
+
 #pragma once
 #include "stdafx.h"
 #include <string>
