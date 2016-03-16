@@ -25,7 +25,7 @@ int Utils::showChoices(int lowerBound, int upperBound) {
 	return choice;
 }
 
-string Utils::convertBookToString(int itemNumber, int quantity, Book book) {
+string Utils::toString(int itemNumber, int quantity, Book book) {
 	string bookString = "";
 	bookString += to_string(itemNumber) + "\n";
 	bookString += "\t ISBN:              " + book.getIsbn() + "\n";

@@ -57,7 +57,7 @@ void CashierModule::display() {
 	else {
 		cout << "\t\t Items In Cart" << endl << endl;
 		for (int i = 0; i < numberItems; i++) 
-			cout << Utils::convertBookToString(i + 1, quantities[i], booksInCart[i]) << endl;
+			cout << Utils::toString(i + 1, quantities[i], booksInCart[i]) << endl;
 
 		cout << "\t\t 1. Checkout" << endl;
 		cout << "\t\t 2. Delete Items In Cart" << endl;
