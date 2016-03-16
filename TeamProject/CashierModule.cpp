@@ -39,6 +39,11 @@ char * CashierModule::getDatePurchase() {
 	return datePurchase;
 }
 
+/*
+	Singleton to make sure only one CashierModule is constructed
+	
+	@return CashierModule object
+*/
 CashierModule * CashierModule::getInstance() {
 	if (cashierModule == NULL) {
 		cashierModule = new CashierModule();
