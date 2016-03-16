@@ -19,12 +19,27 @@
 #include "Book.h"
 #include "Utils.h"
 
-	using namespace std;
+using namespace std;
 
 const int Utils::DEFAULT = 1;
 const int Utils::INCREASING = 2;
 const int Utils::DECREASING = 3;
 
+/*
+	Function Description:
+		- Prompt user to enter a choice, which is a number from lowerBound to upperBound
+	
+	Implementation:
+		- Declare and intialize a variable choice
+		- Have user enter the choice 
+		- if (choice < lowerBound or choice > upperBound) warn user and prompt him/her to enter again
+		- Repeat step 2, 3 until user's choice is valid
+		- Return user choice
+		
+	@param lowerBound : lower limit
+	@param upperBound : upper limit
+	@return user's choice 
+*/
 int Utils::showChoices(int lowerBound, int upperBound) {
 	int choice = 0;
 	do {
@@ -230,12 +245,26 @@ void Utils::displayBookInformation(Book book) {
 	cout << "\tRetail Price    \t" << setprecision(2) << book.getRetailPrice() << endl << endl;
 }
 
+/*
+	Function Description:
+		- Swap two book object
+	Implementation:
+		- Declare a temporary Book and swap two given Book
+*/
 void Utils::swap(Book  * a, Book * b) {
 	Book c = *a;
 	*a = *b;
 	*b = c;
 }
 
+/*
+	Using Quick Sort's Algorithm to sort an array of Book base on date added and sortMode
+	
+	@param left : lower limit
+	@param right : upper limit
+	@param book : array of books to sort
+	@param sortMode : database, increasing or decreasing order
+*/
 void Utils::sortByAge(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
@@ -267,6 +296,14 @@ void Utils::sortByAge(int left, int right, Book book[], int sortMode) {
 	}
 }
 
+/*
+	Using Quick Sort's Algorithm to sort an array of Book base on date added and sortMode
+	
+	@param left : lower limit
+	@param right : upper limit
+	@param book : array of books to sort
+	@param sortMode : database, increasing or decreasing order
+*/
 void Utils::sortByQuantity(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
@@ -298,6 +335,14 @@ void Utils::sortByQuantity(int left, int right, Book book[], int sortMode) {
 	}
 }
 
+/*
+	Using Quick Sort's Algorithm to sort an array of Book base on date added and sortMode
+	
+	@param left : lower limit
+	@param right : upper limit
+	@param book : array of books to sort
+	@param sortMode : database, increasing or decreasing order
+*/
 void Utils::sortByWholesaleCost(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
@@ -329,6 +374,14 @@ void Utils::sortByWholesaleCost(int left, int right, Book book[], int sortMode) 
 	}
 }
 
+/*
+	Using Quick Sort's Algorithm to sort an array of Book base on date added and sortMode
+	
+	@param left : lower limit
+	@param right : upper limit
+	@param book : array of books to sort
+	@param sortMode : database, increasing or decreasing order
+*/
 void Utils::sortByRetailPrice(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
