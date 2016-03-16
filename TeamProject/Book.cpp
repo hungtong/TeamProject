@@ -1,9 +1,23 @@
+/*
+	CIS22B_TeamProject_BookStore
+	Archana Zone
+	Hung Tong
+	Michelle Liu
+	Theodore Fausak
+	Vasuki Sunder
+*/
+
+// Class Book Specification
 #include "stdafx.h"
 #include <iostream>
 #include <string>
 #include "Book.h"
 #include "Utils.h"
 
+/*
+	Explicit Constructor to construct an object Book
+	Initialize all object's fields
+*/
 Book::Book(string isbn, string title, string author, string publisher,
 	time_t dateAdded, int quantity, double wholesaleCost, double retailPrice) {
 	setIsbn(isbn);
@@ -16,19 +30,32 @@ Book::Book(string isbn, string title, string author, string publisher,
 	setRetailPrice(retailPrice);
 }
 
-/**
- * set the book's isbn
- * 
- * @param i isbn number entered by user
+/*
+	Implicit Constructor to construct an object Book
+	Initialize all object's fields
+*/
+Book::Book() {
+	isbn = "";
+	title = "";
+	author = "";
+	publisher = "";
+	dateAdded = NULL;
+	quantityOnHand = 0;
+	wholesaleCost = 0;
+	retailPrice = 0;
+}
+
+/*
+ 	Specify ISBN
+ 	@param r : desired Retail Price
  */
 void Book::setIsbn(string i) {
 	isbn = i;
 }
 
-/**
- * set the book's title
- * 
- * @param t book title entered by user
+/*
+	Specify Title
+	@param t : desired Title
  */
 void Book::setTitle(string t) {
 	if (t == "")
@@ -41,10 +68,9 @@ void Book::setTitle(string t) {
 	}
 }
 
-/**
- * set the book's author
- * 
- * @param a  book author entered by user
+/*
+	Specify Author
+	@param a : desired Author
  */
 void Book::setAuthor(string a) {
 	if (a == "")
@@ -57,10 +83,9 @@ void Book::setAuthor(string a) {
 	}
 }
 
-/**
- * set the book's publisher
- * 
- * @param p  book publisher entered by user
+/*
+	Specify Publisher
+	@param p : desired Publisher
  */
 void Book::setPublisher(string p) {
 	if (p == "")
@@ -73,19 +98,17 @@ void Book::setPublisher(string p) {
 	}
 }
 
-/**
- * set the date the book was added  
- * 
- * @param d  date the book was added entered by user
+/*
+	Specify Date Added
+	@param d : desired Time
  */
 void Book::setDateAdded(time_t d) {
 	dateAdded = d;
 }
 
-/**
- * set quantities on hand for a book
- * 
- * @param q  quantity entered by user
+/*
+	Specify Quantity On Hand
+	@param q : desired Quantity On Hand
  */
 void Book::setQuantityOnHand(int q) {
 	if (q < 0)
@@ -99,10 +122,9 @@ void Book::setQuantityOnHand(int q) {
 
 }
 
-/**
- * set the wholesale price for the book 
- * 
- * @param w  wholesale price entered by user
+/*
+	Specify Wholesal Cost
+	@param w : desired Wholesale Cost
  */
 void Book::setWholesaleCost(double w) {
 	if (w <= 0)
@@ -115,10 +137,9 @@ void Book::setWholesaleCost(double w) {
 	}
 }
 
-/**
- * set the retail price for the book 
- * 
- * @param r  retail price entered by user
+/*	
+	Specify Retail Price
+	@param r : desired Retail Price
  */
 void Book::setRetailPrice(double r) {
 	if (r <= 0)
@@ -131,63 +152,51 @@ void Book::setRetailPrice(double r) {
 	}
 }
 
-/**
- * return the isbn number of the book 
- * 
- * @return the isbn number of the book 
+/*	
+	Return ISBN
+	@return ISBN
  */
 string Book::getIsbn() { return isbn; }
-/**
- * return the title of the book 
- * 
- * @return title of the book 
+
+/*	
+	Return Title
+	@return Title
  */
 string Book::getTitle() { return title; }
-/**
- * return author of the book 
- * 
- * @return author of the book 
+
+/*	
+	Return Author
+	@return Author
  */
 string Book::getAuthor() { return author; }
-/**
- * return publisher of the book 
- * 
- * @return publisher of the book 
+
+/*	
+	Return Publisher
+	@return Publisher
  */
 string Book::getPublisher() { return publisher; }
-/**
- * return date the book was added  
- * 
- * @return date the book was added  
+
+/*	
+	Return Date Added
+	@return Date Added
  */
 time_t Book::getDateAdded() { return dateAdded; }
-/**
- * return quantity on hand for the book 
- * 
- * @return quantity on hand
+
+/*	
+	Return Quantity-On-Hand
+	@return Quantity-On-Hand
  */
 int Book::getQuantityOnHand() { return quantityOnHand; }
-/**
- * return wholesale cost of the book
- * 
- * @return wholesale cost of the book
+
+/*	
+	Return Wholesale Cost
+	@return Wholesale Cost
  */
 double Book::getWholesaleCost() { return wholesaleCost; }
-/**
- * return retail price of the book
- * 
- * @return retail price
+
+/*	
+	Return Retail Price
+	@return Retail Price
  */
 double Book::getRetailPrice() { return retailPrice; }
-
-Book::Book() {
-	isbn = "";
-	title = "";
-	author = "";
-	publisher = "";
-	dateAdded = NULL;
-	quantityOnHand = 0;
-	wholesaleCost = 0;
-	retailPrice = 0;
-}
 
