@@ -16,10 +16,20 @@ Book::Book(string isbn, string title, string author, string publisher,
 	setRetailPrice(retailPrice);
 }
 
+/**
+ * set the book's isbn
+ * 
+ * @param i isbn number entered by user
+ */
 void Book::setIsbn(string i) {
 	isbn = i;
 }
 
+/**
+ * set the book's title
+ * 
+ * @param t book title entered by user
+ */
 void Book::setTitle(string t) {
 	if (t == "")
 	{
@@ -31,6 +41,11 @@ void Book::setTitle(string t) {
 	}
 }
 
+/**
+ * set the book's author
+ * 
+ * @param a  book author entered by user
+ */
 void Book::setAuthor(string a) {
 	if (a == "")
 	{
@@ -42,6 +57,11 @@ void Book::setAuthor(string a) {
 	}
 }
 
+/**
+ * set the book's publisher
+ * 
+ * @param p  book publisher entered by user
+ */
 void Book::setPublisher(string p) {
 	if (p == "")
 	{
@@ -53,10 +73,20 @@ void Book::setPublisher(string p) {
 	}
 }
 
+/**
+ * set the date the book was added  
+ * 
+ * @param d  date the book was added entered by user
+ */
 void Book::setDateAdded(time_t d) {
 	dateAdded = d;
 }
 
+/**
+ * set quantities on hand for a book
+ * 
+ * @param q  quantity entered by user
+ */
 void Book::setQuantityOnHand(int q) {
 	if (q <= 0)
 	{
@@ -69,6 +99,11 @@ void Book::setQuantityOnHand(int q) {
 
 }
 
+/**
+ * set the wholesale price for the book 
+ * 
+ * @param w  wholesale price entered by user
+ */
 void Book::setWholesaleCost(double w) {
 	if (w <= 0)
 	{
@@ -80,6 +115,11 @@ void Book::setWholesaleCost(double w) {
 	}
 }
 
+/**
+ * set the retail price for the book 
+ * 
+ * @param r  retail price entered by user
+ */
 void Book::setRetailPrice(double r) {
 	if (r <= 0)
 	{
@@ -91,13 +131,53 @@ void Book::setRetailPrice(double r) {
 	}
 }
 
+/**
+ * return the isbn number of the book 
+ * 
+ * @return the isbn number of the book 
+ */
 string Book::getIsbn() { return isbn; }
+/**
+ * return the title of the book 
+ * 
+ * @return title of the book 
+ */
 string Book::getTitle() { return title; }
+/**
+ * return author of the book 
+ * 
+ * @return author of the book 
+ */
 string Book::getAuthor() { return author; }
+/**
+ * return publisher of the book 
+ * 
+ * @return publisher of the book 
+ */
 string Book::getPublisher() { return publisher; }
+/**
+ * return date the book was added  
+ * 
+ * @return date the book was added  
+ */
 time_t Book::getDateAdded() { return dateAdded; }
+/**
+ * return quantity on hand for the book 
+ * 
+ * @return quantity on hand
+ */
 int Book::getQuantityOnHand() { return quantityOnHand; }
+/**
+ * return wholesale cost of the book
+ * 
+ * @return wholesale cost of the book
+ */
 double Book::getWholesaleCost() { return wholesaleCost; }
+/**
+ * return retail price of the book
+ * 
+ * @return retail price
+ */
 double Book::getRetailPrice() { return retailPrice; }
 
 Book::Book() {
