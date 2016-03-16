@@ -14,6 +14,13 @@ const int Utils::DEFAULT = 1;
 const int Utils::INCREASING = 2;
 const int Utils::DECREASING = 3;
 
+/**
+ * ask user to input a choice 
+ * 
+ * @param lowerBound lower boundary for choice
+ * @param upperBound upper boundary for choice
+ * @return choice user inputted
+ */
 int Utils::showChoices(int lowerBound, int upperBound) {
 	int choice = 0;
 	do {
@@ -25,6 +32,19 @@ int Utils::showChoices(int lowerBound, int upperBound) {
 	return choice;
 }
 
+/**
+ * ask user to input a choice 
+ * 
+ * @param itemNumber
+ * @param isbn
+ * @param title
+ * @param author
+ * @param publisher
+ * @param dateAdded
+ * @param quantity
+ * @param retail price
+ * @return book's information that's been converted to string
+ */
 string Utils::convertBookToString(int itemNumber, string isbn, string title, 
 								string author, string publisher, time_t dateAdded, 
 							int quantity, double retailPrice) {
@@ -203,6 +223,12 @@ Book Utils::fromCsv(string line) {
 	}
 }
 
+/**
+ * convert string to lower case
+ * 
+ * @param givenString string given to be converted 
+ * @return string that has been converted to lower case
+ */
 string Utils::toLowerCase(string givenString) {
 	for (int i = 0; i < givenString.length(); i++)
 		if (givenString[i] >= 'A' && givenString[i] <= 'Z')
@@ -210,6 +236,11 @@ string Utils::toLowerCase(string givenString) {
 	return givenString;
 }
 
+/**
+ * display information of a book
+ * 
+ * @param Book book object given to be displayed
+ */
 void Utils::displayBookInformation(Book book) {
 	cout << "\tISBN            \t" << book.getIsbn() << endl;
 	cout << "\tTitle           \t" << book.getTitle() << endl;
@@ -221,12 +252,25 @@ void Utils::displayBookInformation(Book book) {
 	cout << "\tRetail Price    \t" << setprecision(2) << book.getRetailPrice() << endl << endl;
 }
 
+/**
+ * swap two books
+ * 
+ * @param a one of the books that's to be swapped
+ * @param b the other book that's to be swapped 
+ */
 void Utils::swap(Book  * a, Book * b) {
 	Book c = *a;
 	*a = *b;
 	*b = c;
 }
 
+/**
+ *sort book by age
+ * @param left
+ * @param right
+ * @param book[]
+ * @param sortMode
+ */
 void Utils::sortByAge(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
@@ -258,6 +302,13 @@ void Utils::sortByAge(int left, int right, Book book[], int sortMode) {
 	}
 }
 
+/**
+ *sort book by quantity
+ * @param left
+ * @param right
+ * @param book[]
+ * @param sortMode
+ */
 void Utils::sortByQuantity(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
@@ -289,6 +340,13 @@ void Utils::sortByQuantity(int left, int right, Book book[], int sortMode) {
 	}
 }
 
+/**
+ *sort book by wholesale cost
+ * @param left
+ * @param right
+ * @param book[]
+ * @param sortMode
+ */
 void Utils::sortByWholesaleCost(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
@@ -320,6 +378,13 @@ void Utils::sortByWholesaleCost(int left, int right, Book book[], int sortMode) 
 	}
 }
 
+/**
+ *sort book by retail price
+ * @param left
+ * @param right
+ * @param book[]
+ * @param sortMode
+ */
 void Utils::sortByRetailPrice(int left, int right, Book book[], int sortMode) {
 	if (sortMode != DEFAULT && left <= right) {
 		int x = left;
