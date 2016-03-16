@@ -106,20 +106,28 @@ time_t Utils::fromString(string str) {
 }
 
 // Converts book object into csv (comma separated value) entry
-string Utils::toCsv(Book &b) {
-	time_t dateAdded = b.getDateAdded();
+string Utils::toCsv(Book *b) {
+	time_t dateAdded = b->getDateAdded();
 	string dateStr = Utils::toString(dateAdded);
-	string csv = b.getIsbn() + "," + b.getTitle() + "," + b.getAuthor() + ","
-				+ b.getPublisher() + "," + dateStr + "," + to_string(b.getQuantityOnHand()) + ",";
+	string csv = b->getIsbn() + "," + b->getTitle() + "," + b->getAuthor() + ","
+		+ b->getPublisher() + "," + dateStr + "," + to_string(b->getQuantityOnHand()) + ",";
 	
 	ostringstream stream1, stream2;
-	stream1 << fixed << setprecision(2) << b.getWholesaleCost();
+	stream1 << fixed << setprecision(2) << b->getWholesaleCost();
 	csv += stream1.str() + ",";
 
-	stream2 << fixed << setprecision(2) << b.getRetailPrice();
+	stream2 << fixed << setprecision(2) << b->getRetailPrice();
 	csv += stream2.str();
 	
 	return csv;
+}
+
+// Parse isbn from csv
+string Utils::parseIsbn(string line) {
+	istringstream tokens(line);
+	string isbn = "";
+	getline(tokens, isbn, ',');
+	return isbn;
 }
 
 // Parse csv (comma separated value) entry into Book object
@@ -343,3 +351,28 @@ void Utils::sortByRetailPrice(int left, int right, Book book[], int sortMode) {
 	}
 }
 
+int Utils::readInt(char * message){
+	int x;
+	cout << message;
+	while (!(cin >> x))
+	{
+		cout << "Please provide an interger value." << endl;
+		cin.clear();
+		cin.ignore(10000, '\n');
+		cout << message;
+	}
+	return x;
+}
+
+double Utils::readDouble(char * message){
+	double x;
+	cout << message;
+	while (!(cin >> x))
+	{
+		cout << "Please provide an float value." << endl;
+		cin.clear();
+		cin.ignore(10000, '\n');
+		cout << message;
+	}
+	return x;
+}
