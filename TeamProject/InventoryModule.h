@@ -34,10 +34,12 @@ public:
 
 	string askForISBN();
 
+	int getBookPositionInCart(Book book);
+
 	void display();
 	void displayLookUpMenu();
 	void displayAdd();
-	void displayOptionsAfterLookUp(int thingToShow, Book &bookObtained);
+	void displayOptionsAfterLookUp(int thingToShow, Book bookObtained);
 	void displayEdit();
 	bool displayEditOptions(string isbn);
 	void displayDelete();

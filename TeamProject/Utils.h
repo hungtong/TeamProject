@@ -18,8 +18,7 @@ public:
 	static const int DECREASING;
 
 	static int showChoices(int lowerBound, int upperBound);
-	static string convertBookToString(int itemNumber, string isbn, string title, string author, 
-		string publisher, time_t dateAdded,int quantity, double retailPrice);
+	static string convertBookToString(int itemNumber, int quantity, Book book);
 
 	static string toString(time_t const &time);
 	static time_t fromString(string str);

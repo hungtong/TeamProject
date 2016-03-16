@@ -22,7 +22,8 @@ private:
 
 public:
 	static int numberItems;
-	static string purchaseBooks[1024];
+	static Book booksInCart[1024];
+	static int quantities[1024];
 
 	char * getDatePurchase();
 	static CashierModule * getInstance();

@@ -14,6 +14,7 @@
 #include "Utils.h"
 
 InventoryModule * InventoryModule::inventoryModule;
+
 const int InventoryModule::SHOW_ISBN = 1;
 const int InventoryModule::SHOW_TITLE = 2;
 const int InventoryModule::SHOW_AUTHOR = 3;
@@ -33,6 +34,13 @@ InventoryModule * InventoryModule::getInstance() {
 		inventoryModule = new InventoryModule();
 	}
 	return inventoryModule;
+}
+
+int InventoryModule::getBookPositionInCart(Book book) {
+	for (int i = 0; i < CashierModule::numberItems; i++)
+		if (CashierModule::booksInCart[i].getIsbn() == book.getIsbn()) 
+			return i;
+	return -1;
 }
 
 string InventoryModule::askForISBN() {
@@ -117,10 +125,10 @@ void InventoryModule::displayLookUpMenu() {
 	}
 }
 
-void InventoryModule::displayOptionsAfterLookUp(int thingToShow, Book &bookObtained) {
+void InventoryModule::displayOptionsAfterLookUp(int thingToShow, Book bookObtained) {
 	cout << "\t\t 1. Look Up Another Book" << endl;
 	cout << "\t\t 2. Back To Look Up Menu" << endl;
-	cout << "\t\t 3. Add This Book To Cart" << endl << endl;
+	cout << "\t\t 3. Add This Book To Cart"<< endl << endl;
 
 	switch (Utils::showChoices(1, 3)) {
 	case 1:
@@ -157,40 +165,32 @@ void InventoryModule::displayOptionsAfterLookUp(int thingToShow, Book &bookObtai
 		displayLookUpMenu();
 		break;
 	case 3:
-		int howMany = -1;
+		int howMany = 0;
 		do {
-			cout << "How Many Books Do You Want? ";
+			cout << "How Many Books Do You Want?\t";
 			cin >> howMany;
 			if (howMany < 0)
 				cout << "Number Of Books Has To Be An Integer Greater Than 0. Please Enter Again" << endl << endl;
 			if (howMany > bookObtained.getQuantityOnHand())
 				cout << "We Only Have " << bookObtained.getQuantityOnHand() << " In Stock. Please Enter Again" << endl << endl;
 		} while (howMany < 0 || howMany > bookObtained.getQuantityOnHand());
-	
-		if (howMany == bookObtained.getQuantityOnHand())
-			BookDAO::getInstance()->deleteByIsbn(bookObtained.getIsbn());
-		else BookDAO::getInstance()->update(bookObtained.getIsbn(),
-											bookObtained.getTitle(),
-											bookObtained.getAuthor(),
-											bookObtained.getPublisher(),
-											bookObtained.getQuantityOnHand() - howMany,
-											bookObtained.getWholesaleCost(),
-											bookObtained.getRetailPrice());
 
-		CashierModule::purchaseBooks[CashierModule::numberItems++] = Utils::convertBookToString(
-																	CashierModule::numberItems,
-																	bookObtained.getIsbn(),
-																	bookObtained.getTitle(),
-																	bookObtained.getAuthor(),
-																	bookObtained.getPublisher(),
-																	bookObtained.getDateAdded(),
-																	howMany,
-																	bookObtained.getRetailPrice());
-		bookObtained.setQuantityOnHand(bookObtained.getQuantityOnHand() - howMany);
-		cout << "Your Purchase Has Been Recorded In Receipt. Access Cashier Module To Review!";
-		system("pause");
-		break;
+		int position = getBookPositionInCart(bookObtained);
+		if (position == -1) {
+			CashierModule::quantities[CashierModule::numberItems] += howMany;
+			CashierModule::booksInCart[CashierModule::numberItems++] = bookObtained;
 
+		}
+		else CashierModule::quantities[position] += howMany;
+
+		BookDAO::getInstance()->update(
+								bookObtained.getIsbn(),
+								bookObtained.getTitle(),
+								bookObtained.getAuthor(),
+								bookObtained.getPublisher(),
+								bookObtained.getQuantityOnHand() - howMany,
+								bookObtained.getWholesaleCost(),
+								bookObtained.getRetailPrice());
 	}
 }
 

@@ -25,20 +25,18 @@ int Utils::showChoices(int lowerBound, int upperBound) {
 	return choice;
 }
 
-string Utils::convertBookToString(int itemNumber, string isbn, string title, 
-								string author, string publisher, time_t dateAdded, 
-							int quantity, double retailPrice) {
+string Utils::convertBookToString(int itemNumber, int quantity, Book book) {
 	string bookString = "";
 	bookString += to_string(itemNumber) + "\n";
-	bookString += "\t ISBN:              " + isbn + "\n";
-	bookString += "\t Title:             " + title + "\n";
-	bookString += "\t Author:            " + author + "\n";
-	bookString += "\t Publisher:         " + publisher + "\n";
-	bookString += "\t Date Added:        " + toString(dateAdded) + "\n";
+	bookString += "\t ISBN:              " + book.getIsbn() + "\n";
+	bookString += "\t Title:             " + book.getTitle() + "\n";
+	bookString += "\t Author:            " + book.getAuthor() + "\n";
+	bookString += "\t Publisher:         " + book.getPublisher() + "\n";
+	bookString += "\t Date Added:        " + toString(book.getDateAdded()) + "\n";
 	bookString += "\t Quantity:          " + to_string(quantity) + "\n";
 	
 	ostringstream stream;
-	stream << fixed << setprecision(2) << retailPrice;
+	stream << fixed << setprecision(2) << book.getRetailPrice();
 	bookString += "\t Retail Price:      " + stream.str() + "\n";
 
 	return bookString;

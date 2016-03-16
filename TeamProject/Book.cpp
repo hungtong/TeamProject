@@ -58,7 +58,7 @@ void Book::setDateAdded(time_t d) {
 }
 
 void Book::setQuantityOnHand(int q) {
-	if (q <= 0)
+	if (q < 0)
 	{
 		throw NonPositiveQuantity(q);
 	}

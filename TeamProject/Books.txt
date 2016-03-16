@@ -1,20 +1,20 @@
 0399257748,The Martian,Andy Weir,Scribner,2015-1-16 23:56:11,35,11.84,16.99
-0803740166,Roller Girl,Victoria Jamieson,Dial Books,2015-3-10 17:22:23,17,7.80,12.99
-0316381306,Awkward,Svetlana Chmakova,Yen Press,2015-7-21 14:22:12,22,6.70,11.00
-1501106473,Brooklyn,Colm Toibin,Scribner,2015-9-8 14:59:59,41,9.25,15.00
+0803740166,Roller Girl,Victoria Jamieson,Dial Books,2015-3-11 2:22:23,14,7.80,12.99
+0316381306,Awkward,Svetlana Chmakova,Yen Press,2015-7-21 23:22:12,22,6.70,11.00
+1501106473,Brooklyn,Colm Toibin,Scribner,2015-9-8 23:59:59,41,9.25,15.00
 0312577222,The Nightingale,Kristin Hannah,Anchor,2015-2-14 9:14:4,10,9.99,16.50
-0062310631,Red Queen,Victoria Aveyard,HarperTeen,2014-5-4 4:11:23,29,7.31,10.59
+0062310631,Red Queen,Victoria Aveyard,HarperTeen,2014-5-4 13:11:23,29,7.31,10.59
 0451414136,The Stranger,Harlan Coben,Dutton,2016-3-9 20:10:11,65,8.20,9.99
-1455559814,Memory Man,David Baldacci,Grand Central,2015-9-15 18:23:11,2,6.48,9.50
+1455559814,Memory Man,David Baldacci,Grand Central,2015-9-16 3:23:11,2,6.48,9.50
 1455581186,Friction,Sandra Brown,Grand Central,2016-2-2 19:8:9,12,9.50,13.99
-0143121707,The Revenant,Michael Punk,Penguin,2015-5-16 2:22:22,51,10.43,11.50
-1616149981,The Life We Bury,Allen Eskers,Seventh Street,2014-10-13 16:29:45,43,5.99,7.99
-1476729093,The Rosie Project,Graeme Samson,Simon Schuster,2014-6-10 6:33:30,44,13.11,15.00
-0143124544,Me Before You,Jojo Moyes,Penguin,2013-7-16 19:14:10,76,10.45,14.99
+0143121707,The Revenant,Michael Punk,Penguin,2015-5-16 11:22:22,51,10.43,11.50
+1616149981,The Life We Bury,Allen Eskers,Seventh Street,2014-10-14 1:29:45,43,5.99,7.99
+1476729093,The Rosie Project,Graeme Samson,Simon Schuster,2014-6-10 15:33:30,46,13.11,15.00
+0143124544,Me Before You,Jojo Moyes,Penguin,2013-7-17 4:14:10,76,10.45,14.99
 0804172706,A Little Life,Hanya Yanagihara,Anchor,2016-1-16 16:40:39,85,7.77,10.99
-1476789630,Luckiest Girl Alive,Jessica Knoll,Simon Schuster,2015-5-12 15:10:46,9,8.98,10.00
+1476789630,Luckiest Girl Alive,Jessica Knoll,Simon Schuster,2015-5-13 0:10:46,9,8.98,10.00
 0375869026,Wonder,R.J. Palacio,Knopf Books,2012-2-28 14:30:28,28,5.95,9.99
-1416971718,Out Of My Mind,Sharon M. Draper,Penguin,2012-5-1 20:30:49,10,8.82,11.49
+1416971718,Out Of My Mind,Sharon M. Draper,Penguin,2012-5-2 5:30:49,10,8.82,11.49
 0061992275,The One And Only Ivan,Kathryn Applegate,HarperCollins,2015-1-6 16:45:22,54,7.45,12.50
-1250061628,Cometh The Hour,Jeffrey Archer,Anchor,2016-2-16 7:14:9,16,12.54,13.99o
+1250061628,Cometh The Hour,Jeffrey Archer,Anchor,2016-2-16 7:14:9,16,12.54,13.99
 1501116975,The Japanese Lover,Isabel Allende,Atria Books,2015-11-3 3:45:40,83,11.25,11.99
