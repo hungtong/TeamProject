@@ -159,8 +159,7 @@ void InventoryModule::displayOptionsAfterLookUp(int thingToShow, Book &bookObtai
 	case 3:
 		int howMany = -1;
 		do {
-			cout << "How Many Books Do You Want? ";
-			cin >> howMany;
+			howMany = Utils::readInt("How Many Books Do You Want? ");
 			if (howMany < 0)
 				cout << "Number Of Books Has To Be An Integer Greater Than 0. Please Enter Again" << endl << endl;
 			if (howMany > bookObtained.getQuantityOnHand())
@@ -212,12 +211,9 @@ void InventoryModule::displayAdd() {
 	getline(cin, author);
 	cout << "\t Enter Publisher:         ";
 	getline(cin, publisher);
-	cout << "\t Enter Quantity-On-Hand:  ";
-	cin >> quantity;
-	cout << "\t Enter Wholesale Cost     ";
-	cin >> wholesaleCost;
-	cout << "\t Enter Retail Price       ";
-	cin >> retailPrice;
+	quantity = Utils::readInt("\t Enter Quantity-On-Hand:  ");
+	wholesaleCost = Utils::readDouble("\t Enter Wholesale Cost     ");
+	retailPrice = Utils::readDouble("\t Enter Retail Price       ");
 
 	cout << "\n\t\t Do You Want To Add This Book?" << endl;
 	cout << "\t\t 1. Yes, I Want To Add This Book" << endl;
@@ -267,12 +263,9 @@ bool InventoryModule::displayEditOptions(string isbn) {
 	getline(cin, author);
 	cout << "\t Enter Publisher:         ";
 	getline(cin, publisher);
-	cout << "\t Enter Quantity-On-Hand:  ";
-	cin >> quantity;
-	cout << "\t Enter Wholesale Cost:    ";
-	cin >> wholesaleCost;
-	cout << "\t Enter Retail Price:      ";
-	cin >> retailPrice;
+	quantity = Utils::readInt("\t Enter Quantity-On-Hand:  ");
+	wholesaleCost = Utils::readDouble("\t Enter Wholesale Cost:    ");
+	retailPrice = Utils::readDouble("\t Enter Retail Price:      ");
 
 	cout << "\n\t\t Do You Want To Edit This Book?" << endl;
 	cout << "\t\t 1. Yes, I Want To Edit This Book" << endl;
@@ -463,9 +456,7 @@ void InventoryModule::showBooksByQuantity() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
 	cout << "\t\t    Look Up By Quantity" << endl << endl;
-	cout << "\t\t     Enter Quantity: ";
-	int quantity = 0;
-	cin >> quantity;
+	int quantity = Utils::readInt("\t\t     Enter Quantity: ");
 	Book * possibleBooks = BookDAO::getInstance()->getBooksByQuantity(quantity);
 
 	if (BookDAO::numPossibleBooks != 0) {
@@ -494,9 +485,7 @@ void InventoryModule::showBooksByWholesale() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
 	cout << "\t\t    Look Up By Wholesale Cost" << endl << endl;
-	cout << "\t\t   Enter Wholesale Cost: ";
-	double wholesaleCost = 0;
-	cin >> wholesaleCost;
+	double wholesaleCost = Utils::readDouble("\t\t   Enter Wholesale Cost: ");
 	Book * possibleBooks = BookDAO::getInstance()->getBooksByWholesaleCost(wholesaleCost);
 
 	if (BookDAO::numPossibleBooks != 0) {
@@ -525,9 +514,7 @@ void InventoryModule::showBooksByRetailPrice() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
 	cout << "\t\t    Look Up By Retail Price" << endl << endl;
-	cout << "\t\t   Enter Retail Price: ";
-	double retailPrice = 0;
-	cin >> retailPrice;
+	double retailPrice = Utils::readDouble("\t\t   Enter Retail Price: ");
 	Book * possibleBooks = BookDAO::getInstance()->getBooksByRetailPrice(retailPrice);
 
 	if (BookDAO::numPossibleBooks != 0) {
