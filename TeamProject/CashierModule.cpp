@@ -37,6 +37,13 @@ CashierModule * CashierModule::getInstance() {
 	return cashierModule;
 }
 
+/* 
+clears the screen
+if there are 0 items, displays the information to access different modules
+else, shows the current items in cart
+gives options to checkout, delete items, or go back to menu
+
+*/ 
 void CashierModule::display() {
 	system("CLS");
 	cout << "Serendipity Book Sellers" << endl << endl;

@@ -13,9 +13,10 @@ using namespace std;
 
 class BookDAO {
 private:
+	const char * BOOK_FILE_NAME = "Books.txt";
 	Book books[1024];
 	static BookDAO * bookDAO;
-
+	void appendIntoFile(Book *b);
 	void storeToFile();
 
 public:
@@ -23,7 +24,6 @@ public:
 	static int numBooks;
 
 	BookDAO();
-	void close();
 	static BookDAO * getInstance();
 	int getNumBooks() { return numBooks; }
 

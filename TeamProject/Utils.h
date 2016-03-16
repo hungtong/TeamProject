@@ -23,8 +23,9 @@ public:
 	static string toString(time_t const &time);
 	static time_t fromString(string str);
 
-	static string toCsv(Book &b);
+	static string toCsv(Book *b);
 	static Book fromCsv(string line);
+	static string parseIsbn(string line);
 
 	static string toLowerCase(string givenString);
 	static void displayBookInformation(Book book);
@@ -35,6 +36,8 @@ public:
 	static void sortByQuantity(int left, int right, Book book[], int sortMode);
 	static void sortByWholesaleCost(int left, int right, Book book[], int sortMode);
 	static void sortByRetailPrice(int left, int right, Book book[], int sortMode);
+	static int readInt(char * message);
+	static double readDouble(char * message);
 };
 
 #endif // UTILS_H
