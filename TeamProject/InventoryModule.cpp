@@ -78,6 +78,9 @@ string InventoryModule::askForISBN() {
 	return isbn;
 }
 
+/*
+	Display available options in Inventory Module and corresponding transitions when user choose one option.
+*/
 void InventoryModule::display() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -107,6 +110,9 @@ void InventoryModule::display() {
 	display();
 }
 
+/*
+	Display available options in Look Up Menu and corresponding transitions when user choose one option.
+*/
 void InventoryModule::displayLookUpMenu() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -149,6 +155,10 @@ void InventoryModule::displayLookUpMenu() {
 	}
 }
 
+/*
+	Display available options after a desired book's information is presented and corresponding transitions 
+	when user choose one option.
+*/
 void InventoryModule::displayOptionsAfterLookUp(int thingToShow, Book bookObtained) {
 	cout << "\t\t 1. Look Up Another Book" << endl;
 	cout << "\t\t 2. Back To Look Up Menu" << endl;
@@ -217,7 +227,9 @@ void InventoryModule::displayOptionsAfterLookUp(int thingToShow, Book bookObtain
 	}
 }
 
-
+/*
+	Display available options in Add Menu and corresponding transitions when user choose one option.
+*/
 void InventoryModule::displayAdd() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -251,6 +263,9 @@ void InventoryModule::displayAdd() {
 	}
 }
 
+/*
+	Display available options in Edit Menu and corresponding transitions when user choose one option.
+*/
 void InventoryModule::displayEdit() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -276,6 +291,10 @@ void InventoryModule::displayEdit() {
 		displayEdit();
 }
 
+/*
+	Display available options after user identifies the book he or she wants to edit and corresponding 
+	transitions when user choose one option.
+*/
 bool InventoryModule::displayEditOptions(string isbn) {
 	string title = "", author = "", publisher = "";
 	int quantity = 0;
@@ -305,6 +324,9 @@ bool InventoryModule::displayEditOptions(string isbn) {
 	return false;
 }
 
+/*
+	Display available options in Delete Menu and corresponding transitions when user choose one option.
+*/
 void InventoryModule::displayDelete() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -316,6 +338,9 @@ void InventoryModule::displayDelete() {
 	system("pause");
 }
 
+/*
+	Return a list of books related to an ISBN
+*/
 void InventoryModule::showBooksByISBN() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -348,6 +373,9 @@ void InventoryModule::showBooksByISBN() {
 	}
 }
 
+/*
+	Return a list of books related to a title
+*/
 void InventoryModule::showBooksByTitle() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -380,6 +408,9 @@ void InventoryModule::showBooksByTitle() {
 	}
 }
 
+/*
+	Return a list of books related to an authorr
+*/
 void InventoryModule::showBooksByAuthor() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -412,6 +443,9 @@ void InventoryModule::showBooksByAuthor() {
 	}
 }
 
+/*
+	Return a list of books related to a publisher
+*/
 void InventoryModule::showBooksByPublisher() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -445,6 +479,9 @@ void InventoryModule::showBooksByPublisher() {
 	}
 }
 
+/*
+	Return a list of books related to an exact date
+*/
 void InventoryModule::showBooksByDate() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
@@ -478,6 +515,9 @@ void InventoryModule::showBooksByDate() {
 	}
 }
 
+/*
+	Return a list of books related to a quantity
+*/
 void InventoryModule::showBooksByQuantity() {
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
