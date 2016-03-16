@@ -23,8 +23,10 @@ BookDAO::BookDAO() {
 	string line = "";
 	while (getline(inputFile, line)) {
 		Book b = Utils::fromCsv(line);
-		books[numBooks] = b;
-		numBooks++;
+		if (b.getQuantityOnHand() > 0) {
+			books[numBooks] = b;
+			numBooks++;
+		}
 	}
 	inputFile.close();
 }
@@ -48,8 +50,9 @@ void BookDAO::appendIntoFile(Book *b) {
 // Recreate data file. Write all book objects from memory into the file.
 void BookDAO::storeToFile() {
 	ofstream outputFile(BOOK_FILE_NAME);
+	string csvRecord = "";
 	for (int i = 0; i < numBooks; i++) {
-		string csvRecord = Utils::toCsv(&books[i]);
+		csvRecord = Utils::toCsv(&books[i]);
 		outputFile << csvRecord << endl;
 	}
 	outputFile.close();
