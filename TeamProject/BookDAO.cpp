@@ -1,3 +1,14 @@
+/*
+	CIS22B_TeamProject_BookStore
+	Archana Zone
+	Hung Tong
+	Michelle Liu
+	Theodore Fausak
+	Vasuki Sunder
+*/
+
+// Class BookDAO Specification 
+
 #include "stdafx.h"
 #include<iostream>
 #include<fstream>
@@ -17,20 +28,29 @@ int BookDAO::numBooks = 0;
 int BookDAO::numPossibleBooks = 0;
 const string BookDAO::BOOK_FILE_NAME = "Books.txt";
 
-// Read book objects from file
+/*
+	Implicit Constructor to read input file
+*/
 BookDAO::BookDAO() {
 	ifstream inputFile(BOOK_FILE_NAME);
 	string line = "";
 	while (getline(inputFile, line)) {
 		Book b = Utils::fromCsv(line);
-		if (b.getQuantityOnHand() > 0) {
-			books[numBooks] = b;
-			numBooks++;
-		}
+		books[numBooks] = b;
+		numBooks++;
 	}
 	inputFile.close();
 }
 
+/*
+	Function Description:
+		- Singleton to make sure BookDAO is only constructed one time
+	
+	Implementation:
+		- If (bookDAO is not constructed yes) construct one and return bookDAO
+		
+	@return pointer of BookDAO
+*/
 BookDAO * BookDAO::getInstance() {
 	if (bookDAO == NULL) {
 		bookDAO = new BookDAO();
@@ -50,9 +70,8 @@ void BookDAO::appendIntoFile(Book *b) {
 // Recreate data file. Write all book objects from memory into the file.
 void BookDAO::storeToFile() {
 	ofstream outputFile(BOOK_FILE_NAME);
-	string csvRecord = "";
 	for (int i = 0; i < numBooks; i++) {
-		csvRecord = Utils::toCsv(&books[i]);
+		string csvRecord = Utils::toCsv(&books[i]);
 		outputFile << csvRecord << endl;
 	}
 	outputFile.close();
