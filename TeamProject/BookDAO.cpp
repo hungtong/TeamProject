@@ -36,8 +36,10 @@ BookDAO::BookDAO() {
 	string line = "";
 	while (getline(inputFile, line)) {
 		Book b = Utils::fromCsv(line);
-		books[numBooks] = b;
-		numBooks++;
+		if (b.getQuantityOnHand() > 0) {
+			books[numBooks] = b;
+			numBooks++;
+		}
 	}
 	inputFile.close();
 }
@@ -58,7 +60,18 @@ BookDAO * BookDAO::getInstance() {
 	return bookDAO;
 }
 
-// Append a new book object into file
+/*
+	Function Description:
+		- Convert a Book into Comma Separated Value and add into database file
+	
+	Implementation:
+		- Create a file stream to open database file
+		- Convert a Book into Comma Separated Value
+		- Write it into database file and close file
+	
+	@param b : a given book
+		
+*/
 void BookDAO::appendIntoFile(Book *b) {
 	fstream file;
 	file.open(BOOK_FILE_NAME, ios::app);
@@ -67,7 +80,6 @@ void BookDAO::appendIntoFile(Book *b) {
 	file.close();
 }
 
-// Recreate data file. Write all book objects from memory into the file.
 void BookDAO::storeToFile() {
 	ofstream outputFile(BOOK_FILE_NAME);
 	for (int i = 0; i < numBooks; i++) {
