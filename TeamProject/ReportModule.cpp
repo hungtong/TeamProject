@@ -34,6 +34,11 @@ template<class Type> void ReportModule::printOut(Type value, int width) {
 template<> void ReportModule::printOut(string value, int width) {
 	cout << left << setw(width) << value;
 }
+/*
+Shows the various methods of vieweing the inventory
+Verifies whether user input is valid
+Displays the right inventory depending on user choice
+*/
 
 void ReportModule::display() {
 	system("CLS");
@@ -90,6 +95,9 @@ void ReportModule::display() {
 		break;
 	}
 }
+/*
+Displays the Inventory of books with the ISBN, title, author, and publisher
+*/
 
 void ReportModule::displayInventoryListing() {
 	system("CLS");
@@ -109,6 +117,9 @@ void ReportModule::displayInventoryListing() {
 	}
 	system("pause");
 }
+/*
+Sorts the books by Wholesale cost and then displays them in that order
+*/
 
 void ReportModule::displayInventoryWholesaleValue() {
 	system("CLS");
@@ -129,7 +140,9 @@ void ReportModule::displayInventoryWholesaleValue() {
 	}
 	system("pause");
 }
-
+/*
+Sorts the books by retail value and then displays them in that order
+*/
 void ReportModule::displayInventoryRetailValue() {
 	system("CLS");
 	Book * books = BookDAO::getInstance()->getBooks();
@@ -150,6 +163,9 @@ void ReportModule::displayInventoryRetailValue() {
 	system("pause");
 
 }
+/*
+Displays books in order of the quantity
+*/
 
 void ReportModule::displayListingByQuantity() {
 	system("CLS");
@@ -175,6 +191,9 @@ void ReportModule::displayListingByQuantity() {
 void ReportModule::displayListingByCost() {
 
 }
+/*
+Displays books in the order of their date added
+*/
 
 void ReportModule::displayListingByAge() {
 	system("CLS");
