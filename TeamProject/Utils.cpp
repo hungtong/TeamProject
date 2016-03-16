@@ -1,3 +1,14 @@
+/*
+	CIS22B_TeamProject_BookStore
+	Archana Zone
+	Hung Tong
+	Michelle Liu
+	Theodore Fausak
+	Vasuki Sunder
+*/
+
+// Class Utils Specification
+
 #include "stdafx.h"
 #include <string>
 #include <iostream>
