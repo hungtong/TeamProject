@@ -17,7 +17,7 @@ int BookDAO::numBooks = 0;
 int BookDAO::numPossibleBooks = 0;
 
 BookDAO::BookDAO() {
-	ifstream inputFile("Books.txt");
+	ifstream inputFile(BOOK_FILE_NAME);
 	string line = "";
 	while (getline(inputFile, line)) {
 		Book b = Utils::fromCsv(line);
@@ -34,17 +34,21 @@ BookDAO * BookDAO::getInstance() {
 	return bookDAO;
 }
 
+void BookDAO::appendIntoFile(Book *b) {
+	fstream file;
+	file.open(BOOK_FILE_NAME, ios::app);
+	string csvRecord = Utils::toCsv(b);
+	file << csvRecord << endl;
+	file.close();
+}
+
 void BookDAO::storeToFile() {
-	ofstream outputFile("Books.txt");
+	ofstream outputFile(BOOK_FILE_NAME);
 	for (int i = 0; i < numBooks; i++) {
-		string csvRecord = Utils::toCsv(books[i]);
+		string csvRecord = Utils::toCsv(&books[i]);
 		outputFile << csvRecord << endl;
 	}
 	outputFile.close();
-}
-
-void BookDAO::close() {
-	storeToFile();
 }
 
 bool BookDAO::existsByIsbn(string isbn) {
@@ -69,7 +73,7 @@ void BookDAO::insert(string isbn, string title, string author, string publisher,
 		Book b(isbn, title, author, publisher, dateAdded, quantityOnHand, wholesaleCost, retailPrice);
 		books[numBooks] = b;
 		numBooks++;
-		storeToFile();
+		appendIntoFile(&b);
 		cout << "\t\t Your Book Has Been Inserted Successfully!" << endl;
 	}
 	catch (Book::EmptyTitle)
