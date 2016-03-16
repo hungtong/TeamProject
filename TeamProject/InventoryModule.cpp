@@ -37,6 +37,11 @@ InventoryModule::InventoryModule() {
 	setDescription("perform query on a file containing list of books");
 }
 
+/*
+	Singleton to make sure only one InventoryModule is constructed
+	
+	@return InventoryModule object
+*/
 InventoryModule * InventoryModule::getInstance() {
 	if (inventoryModule == NULL) {
 		inventoryModule = new InventoryModule();
@@ -44,6 +49,12 @@ InventoryModule * InventoryModule::getInstance() {
 	return inventoryModule;
 }
 
+/*
+	Check whether the given book is in the cart or not, if yes return the position, otherwise return -1
+	
+	@param book : the given book
+	@return position : if the book is in the cart, return the position, otherwise return -1
+*/
 int InventoryModule::getBookPositionInCart(Book book) {
 	for (int i = 0; i < CashierModule::numberItems; i++)
 		if (CashierModule::booksInCart[i].getIsbn() == book.getIsbn()) 
@@ -51,6 +62,11 @@ int InventoryModule::getBookPositionInCart(Book book) {
 	return -1;
 }
 
+/*
+	Prompt user to enter ISBN number, validate and return it
+	
+	@return ISBN
+*/
 string InventoryModule::askForISBN() {
 	string isbn = "";
 	do {
