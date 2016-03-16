@@ -16,6 +16,7 @@ BookDAO * BookDAO::bookDAO;
 int BookDAO::numBooks = 0;
 int BookDAO::numPossibleBooks = 0;
 
+// Read book objects from file
 BookDAO::BookDAO() {
 	ifstream inputFile(BOOK_FILE_NAME);
 	string line = "";
@@ -34,6 +35,7 @@ BookDAO * BookDAO::getInstance() {
 	return bookDAO;
 }
 
+// Append a new book object into file
 void BookDAO::appendIntoFile(Book *b) {
 	fstream file;
 	file.open(BOOK_FILE_NAME, ios::app);
@@ -42,6 +44,7 @@ void BookDAO::appendIntoFile(Book *b) {
 	file.close();
 }
 
+// Recreate data file. Write all book objects from memory into the file.
 void BookDAO::storeToFile() {
 	ofstream outputFile(BOOK_FILE_NAME);
 	for (int i = 0; i < numBooks; i++) {
