@@ -1,3 +1,12 @@
+/*
+	CIS22B_TeamProject_BookStore
+	Archana Zone
+	Hung Tong
+	Michelle Liu
+	Theodore Fausak
+	Vasuki Sunder
+*/
+
 #pragma once
 #include "stdafx.h"
 #include<iostream>
