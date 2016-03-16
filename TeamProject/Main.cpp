@@ -1,8 +1,17 @@
-#include "stdafx.h"//access class 
+/*
+	CIS22B_TeamProject_BookStore
+	Archana Zone
+	Hung Tong
+	Michelle Liu
+	Theodore Fausak
+	Vasuki Sunder
+*/
+
+#include "stdafx.h" 
 #include <iostream>
 
-#include "Module.h"//access class
-#include "BookDAO.h"//access class
+#include "Module.h"
+#include "BookDAO.h"
 
 using namespace std;
 
