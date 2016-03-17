@@ -1,6 +1,6 @@
 /*
 	CIS22B_TeamProject_BookStore
-	Archana Zone
+	Archana Sharma
 	Hung Tong
 	Michelle Liu
 	Theodore Fausak
