@@ -172,10 +172,10 @@ void ReportModule::displayInventoryRetailValue() {
 	system("pause");
 
 }
+
 /*
 Displays books in order of the quantity
 */
-
 void ReportModule::displayListingByQuantity() {
 	system("CLS");
 	Book * books = BookDAO::getInstance()->getBooks();
@@ -197,8 +197,28 @@ void ReportModule::displayListingByQuantity() {
 
 }
 
+/*
+	Display Books with Wholesale cost and Retail Price
+*/
 void ReportModule::displayListingByCost() {
+	system("CLS");
+	Book * books = BookDAO::getInstance()->getBooks();
 
+	Utils::sortByRetailPrice(0, BookDAO::numBooks - 1, books, ReportModule::listingMode);
+	cout << "   ";
+	printOut("ISBN", 20);
+	printOut("Title", 22);
+	printOut("Retail Price", 19);
+	printOut("Wholesale Cost", 15);
+	cout << "\n------------------------------------------------------------------------------" << endl;
+	for (int i = 0; i < BookDAO::getInstance()->getNumBooks(); i++) {
+		printOut(books[i].getIsbn(), 20);
+		printOut(books[i].getTitle(), 25);
+		printOut(books[i].getRetailPrice(), 19);
+		printOut(books[i].getWholesaleCost(), 15);
+		cout << endl;
+	}
+	system("pause");
 }
 /*
 Displays books in the order of their date added
