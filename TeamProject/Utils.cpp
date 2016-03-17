@@ -1,6 +1,6 @@
 /*
 	CIS22B_TeamProject_BookStore
-	Archana Zone
+	Archana Sharma
 	Hung Tong
 	Michelle Liu
 	Theodore Fausak
@@ -51,6 +51,18 @@ int Utils::showChoices(int lowerBound, int upperBound) {
 	return choice;
 }
 
+/*
+Converts a Book object to string representation
+
+Example:
+1
+ISBN:               0399257748
+Title:				The Martian
+Author:				Andy Weir
+Publisher:			Scribner
+Date Added:			2015-1-16 23:56:11
+Quantity:			1
+*/
 string Utils::toString(int itemNumber, int quantity, Book book) {
 	string bookString = "";
 	bookString += to_string(itemNumber) + "\n";
@@ -68,7 +80,12 @@ string Utils::toString(int itemNumber, int quantity, Book book) {
 	return bookString;
 }
 
-// Converts time_t into string of format YY-MM-DD HH:MM:SS
+/*
+Converts time_t object to string representation of format YY-MM-DD HH:MM:SS
+
+Example:
+2015-1-16 23:56:11
+*/
 string Utils::toString(time_t const &time) {
 	tm * timeinfo = localtime(&time);
 	int year = timeinfo->tm_year + 1900;
@@ -84,7 +101,9 @@ string Utils::toString(time_t const &time) {
 	return dateStr + " " + timeStr;
 }
 
-// Parse string of format YY-MM-DD HH:MM:SS into time_t
+/*
+Parse string of format YY-MM-DD HH:MM:SS into time_t
+*/
 time_t Utils::fromString(string str) {
 	// separate date and time
 	istringstream dateTimeStream(str);
@@ -129,7 +148,15 @@ time_t Utils::fromString(string str) {
 	return mktime(&timeinfo);
 }
 
-// Converts book object into csv (comma separated value) entry
+/*
+Converts a book object into csv (comma separated value) entry
+
+Format: 
+isbn,title,author,publisher,date-added,quantity,wholesale-cost,retail-price
+
+Example:
+0399257748,The Martian,Andy Weir,Scribner,2015-1-16 23:56:11,35,11.84,16.99
+*/
 string Utils::toCsv(Book *b) {
 	time_t dateAdded = b->getDateAdded();
 	string dateStr = Utils::toString(dateAdded);
@@ -146,7 +173,9 @@ string Utils::toCsv(Book *b) {
 	return csv;
 }
 
-// Parse isbn from csv
+/*
+Parse isbn from csv of format: isbn,title,...
+*/
 string Utils::parseIsbn(string line) {
 	istringstream tokens(line);
 	string isbn = "";
@@ -154,7 +183,12 @@ string Utils::parseIsbn(string line) {
 	return isbn;
 }
 
-// Parse csv (comma separated value) entry into Book object
+/*
+Parse csv (comma separated value) entry into Book object
+
+csv format:
+isbn,title,author,publisher,date-added,quantity,wholesale-cost,retail-price
+*/
 Book Utils::fromCsv(string line) {
 	istringstream tokens(line);
 
@@ -227,6 +261,9 @@ Book Utils::fromCsv(string line) {
 	}
 }
 
+/*
+Converts any given string to lower case.
+*/
 string Utils::toLowerCase(string givenString) {
 	for (int i = 0; i < givenString.length(); i++)
 		if (givenString[i] >= 'A' && givenString[i] <= 'Z')
