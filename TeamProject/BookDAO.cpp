@@ -1,6 +1,6 @@
 /*
 	CIS22B_TeamProject_BookStore
-	Archana Zone
+	Archana Sharma
 	Hung Tong
 	Michelle Liu
 	Theodore Fausak
@@ -29,7 +29,12 @@ int BookDAO::numPossibleBooks = 0;
 const string BookDAO::BOOK_FILE_NAME = "Books.txt";
 
 /*
-	Implicit Constructor to read input file
+	Implicit Constructor to read input file and populate books array
+
+	for each line in file:
+		parse line (csv entry) and create a book object b
+		if b.quantityOnHand > 0:
+			add b to books array
 */
 BookDAO::BookDAO() {
 	ifstream inputFile(BOOK_FILE_NAME);
@@ -61,16 +66,12 @@ BookDAO * BookDAO::getInstance() {
 }
 
 /*
-	Function Description:
-		- Convert a Book into Comma Separated Value and add into database file
-	
-	Implementation:
-		- Create a file stream to open database file
-		- Convert a Book into Comma Separated Value
-		- Write it into database file and close file
-	
-	@param b : a given book
-		
+	Persist a book object into file
+
+	Open the books data file stream in append mode
+	Convert the given book object into csv string representation
+	Write the csv string into file
+	Close the file stream	
 */
 void BookDAO::appendIntoFile(Book *b) {
 	fstream file;
@@ -80,6 +81,16 @@ void BookDAO::appendIntoFile(Book *b) {
 	file.close();
 }
 
+/*
+	Store all book objects in memory into data file.
+	This operation rewrites the data file.
+
+	Open the books data file stream
+	for each book b in books array:
+		Convert book object b into csv string representation
+		Write the csv string into file
+	Close the file stream
+*/
 void BookDAO::storeToFile() {
 	ofstream outputFile(BOOK_FILE_NAME);
 	for (int i = 0; i < numBooks; i++) {
@@ -89,6 +100,9 @@ void BookDAO::storeToFile() {
 	outputFile.close();
 }
 
+/*
+Checks if a book exists by the given isbn.
+*/
 bool BookDAO::existsByIsbn(string isbn) {
 	for (int i = 0; i < numBooks; i++) {
 		if (books[i].getIsbn().find(isbn) != std::string::npos)
@@ -97,6 +111,13 @@ bool BookDAO::existsByIsbn(string isbn) {
 	return false;
 }
 
+/*
+Inserts a book.
+
+First validates that no book exists by the provided isbn number.
+Validates the input and creates a book object.
+The new object is then persisted in memory and into the data file.
+*/
 void BookDAO::insert(string isbn, string title, string author, string publisher,
 	int quantityOnHand, double wholesaleCost, double retailPrice) {
 	//  Validate that no book exists by this isbn number.
@@ -144,6 +165,13 @@ void BookDAO::insert(string isbn, string title, string author, string publisher,
 	}
 }
 
+/*
+Updates attributes in a book.
+
+First checks if the object exists by the given isbn number.
+Validates the input and update the book information.
+The modified object is then persisted into the data file.
+*/
 void BookDAO::update(string isbn, string title, string author, string publisher,
 	int quantityOnHand, double wholesaleCost, double retailPrice)
 {
@@ -201,6 +229,9 @@ void BookDAO::update(string isbn, string title, string author, string publisher,
 	}
 }
 
+/*
+Delete a book by its isbn number
+*/
 void BookDAO::deleteByIsbn(string isbn)
 {
 	int i = 0;
@@ -225,6 +256,9 @@ void BookDAO::deleteByIsbn(string isbn)
 	storeToFile();
 }
 
+/*
+Get all the books persisted in memory.
+*/
 Book * BookDAO::getBooks() {
 	Book * copied = new Book[1024];
 	for (int i = 0; i < numBooks; i++) {
@@ -233,6 +267,9 @@ Book * BookDAO::getBooks() {
 	return copied;
 }
 
+/*
+Get all books by the given isbn number.
+*/
 Book * BookDAO::getBooksByISBN(string keyword) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
@@ -249,6 +286,9 @@ Book * BookDAO::getBooksByISBN(string keyword) {
 	return possibleBooks;
 }
 
+/*
+Get all books by the given title.
+*/
 Book * BookDAO::getBooksByTitle(string keyword) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
@@ -265,6 +305,9 @@ Book * BookDAO::getBooksByTitle(string keyword) {
 	return possibleBooks;
 }
 
+/*
+Get all books by the given author.
+*/
 Book * BookDAO::getBooksByAuthor(string keyword) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
@@ -281,6 +324,9 @@ Book * BookDAO::getBooksByAuthor(string keyword) {
 	return possibleBooks;
 }
 
+/*
+Get all books by the given publisher.
+*/
 Book * BookDAO::getBooksByPublisher(string keyword) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
@@ -297,6 +343,9 @@ Book * BookDAO::getBooksByPublisher(string keyword) {
 	return possibleBooks;
 }
 
+/*
+Get all books by the given date.
+*/
 Book * BookDAO::getBooksByAge(string age) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
@@ -311,6 +360,9 @@ Book * BookDAO::getBooksByAge(string age) {
 	return possibleBooks;
 }
 
+/*
+Get all books by the given quantity.
+*/
 Book * BookDAO::getBooksByQuantity(int quantity) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
@@ -323,6 +375,9 @@ Book * BookDAO::getBooksByQuantity(int quantity) {
 	return possibleBooks;
 }
 
+/*
+Get all books by the given wholesale cost.
+*/
 Book * BookDAO::getBooksByWholesaleCost(double wholesaleCost) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
@@ -335,6 +390,9 @@ Book * BookDAO::getBooksByWholesaleCost(double wholesaleCost) {
 	return possibleBooks;
 }
 
+/*
+Get all books by the given retail price.
+*/
 Book * BookDAO::getBooksByRetailPrice(double price) {
 	Book * possibleBooks = new Book[1024];
 	int numberPossibleBooks = 0;
