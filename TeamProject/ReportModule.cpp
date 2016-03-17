@@ -21,6 +21,7 @@
 #include "BookDAO.h"
 #include "Utils.h"
 
+//get and set varibles
 ReportModule * ReportModule::reportModule;
 int ReportModule::listingMode = 1;
 
@@ -29,7 +30,7 @@ ReportModule::ReportModule() {
 	setDescription("analyze information in inventory database module");
 }
 
-ReportModule * ReportModule::getInstance() {
+ReportModule * ReportModule::getInstance() {//check if NULL
 	if (reportModule == NULL) {
 		reportModule = new ReportModule();
 	}
@@ -49,11 +50,11 @@ Verifies whether user input is valid
 Displays the right inventory depending on user choice
 */
 
-void ReportModule::display() {
+void ReportModule::display() {//display report module
 	system("CLS");
 	cout << "\t\t  Serendipity Booksellers" << endl;
 	cout << "\t\t\t Reports" << endl << endl;
-	cout << "\t\t 1. Inventory Listing" << endl;
+	cout << "\t\t 1. Inventory Listing" << endl;//give user options 1-8
 	cout << "\t\t 2. Inventory Wholesale Value" << endl;
 	cout << "\t\t 3. Inventory Retail Value" << endl;
 	cout << "\t\t 4. Inventory by Quantity" << endl;
@@ -62,45 +63,45 @@ void ReportModule::display() {
 	cout << "\t\t 7. Listing Configuration" << endl;
 	cout << "\t\t 8. Return to Main Menu" << endl << endl;
 
-	int choice = 0;
+	int choice = 0;//preset to 0
 	do {
 		cout << "\t\t Enter Your Choice: ";
 		cin >> choice;
-		if (choice < 1 || choice > 8)
+		if (choice < 1 || choice > 8)//require user to enter 1-8
 			cout << "\t\t Invalid Command. Please Enter Your Choice Again!!!" << endl << endl;
 	} while (choice < 1 || choice > 8);
 
 	switch (choice) {
 	case 1:
-		displayInventoryListing();
+		displayInventoryListing();//if 1: display the inventory
 		display();
 		break;
 	case 2:
-		displayInventoryWholesaleValue();
+		displayInventoryWholesaleValue();//if 2: desplay the inventory and wholesale cost
 		display();
 		break;
 	case 3:
-		displayInventoryRetailValue();
+		displayInventoryRetailValue();//if 3: : display the inventory and retail price
 		display();
 		break;
 	case 4:
-		displayListingByQuantity();
+		displayListingByQuantity();//if 4: : display the inventory by quantity
 		display();
 		break;
 	case 5:
-		displayListingByCost();
+		displayListingByCost();//if 5: : display the inventory by cost
 		display();
 		break;
 	case 6:
-		displayListingByAge();
+		displayListingByAge();//if 6: : display the inventory by age
 		display();
 		break;
 	case 7:
-		displayListingConfiguration();
+		displayListingConfiguration();// if 7: : display the inventory configuration
 		display();
 		break;
 	case 8:
-		Module::showMainMenu();
+		Module::showMainMenu();// if 8: bring user back to main menu
 		break;
 	}
 }
